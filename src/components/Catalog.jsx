@@ -1,7 +1,10 @@
 import classNames from "classnames";
 
 const Catalog = ({ data, pcData }) => {
+  console.log('Test');
   return (
+    // Test
+    
     <>
       {data?.map((pokemonData) => {
         const pokemonType = pokemonData.types?.map((pokemonType) => {
