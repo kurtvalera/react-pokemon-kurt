@@ -18,7 +18,7 @@ const Main = () => {
     }
 
     const getPokeData = async(response) => {
-        // console.log(response.url);
+        
         response.map(async(pokemon)=>{
             const res = await axios.get(pokemon.url);
             

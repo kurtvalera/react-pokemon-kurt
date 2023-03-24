@@ -18,7 +18,7 @@ const Catalog = ({ data, pcData }) => {
                         key={pokemonData.id}  
                         onClick={()=>pcData(pokemonData)}
                     >
-                        <div className={
+                            <div className={
                             classNames(
                                 "w-full", "h-full", "flex", "flex-col", "mx-auto",
                                 (pokemonType[0] == 'grass') && 'bg-[#78C850]',
