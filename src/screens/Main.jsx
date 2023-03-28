@@ -1,26 +1,27 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+
+import {pokeApiUrl as pokeApiUrl} from '../components/constants/constants';
+import { instance } from "../components/api/api";
 
 import Catalog from "../components/Catalog";
 import PokeCard from "../components/PokeCard";
 
 const Main = () => {
   const [pokedex, setPokedex] = useState([]);
-  const [url, setUrl] = useState(
-    "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
-  );
+  const [url, setUrl] = useState(pokeApiUrl);
   const [pokemon, showPokemon] = useState();
 
   const getData = async () => {
-    const response = await axios.get(url);
+
+    const response = await instance();
     getPokeData(response.data.results);
     setUrl(response.data.next);
   };
 
   const getPokeData = async (response) => {
     response.map(async (pokemon) => {
-      const res = await axios.get(pokemon.url);
+      const res = await instance(pokemon.url);
 
       setPokedex((pokedex) => {
         pokedex = [...pokedex, res.data];
