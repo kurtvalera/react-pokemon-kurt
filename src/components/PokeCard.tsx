@@ -1,10 +1,12 @@
 const PokeCard = ({ pokemon }) => {
+  
+  console.log(pokemon);
   return (
     <>
       {!pokemon ? (
         ""
       ) : (
-        <div className="container flex flex-col">
+        <div className="container flex flex-col" key={pokemon.id}>
           <div className="mx-auto">
             <img src={pokemon.sprites.other.home.front_default} />
           </div>
