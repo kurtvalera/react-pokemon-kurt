@@ -17,7 +17,7 @@ const Main = () => {
     order: number,
     img_url: string
   }
-  // const [pokedex, setPokedex] = useState([]);
+  
   const [pokedex, setPokedex] = useState<Pokedex[]>([]); 
 
   const [url, setUrl] = useState(

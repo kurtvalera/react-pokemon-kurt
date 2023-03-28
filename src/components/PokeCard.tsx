@@ -1,6 +1,4 @@
 const PokeCard = ({ pokemon }) => {
-  
-  console.log(pokemon);
   return (
     <>
       {!pokemon ? (
