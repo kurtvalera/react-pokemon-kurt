@@ -2,24 +2,17 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
+import {Pokedex} from '../components/types/types';
+import {Pokemon} from '../components/types/types'
+
 import Catalog from "../components/Catalog";
 import PokeCard from "../components/PokeCard";
 
 const Main = () => {
 
-  type Pokedex = {
-    name: string,
-    url: string
-  }
 
-  type Pokemon = {
-    name: string,
-    order: number,
-    img_url: string
-  }
-  
   const [pokedex, setPokedex] = useState<Pokedex[]>([]); 
-
+  
   const [url, setUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
   );

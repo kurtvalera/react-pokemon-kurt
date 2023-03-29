@@ -1,6 +1,12 @@
 import classNames from "classnames";
-
-const Catalog = ({ data, pcData }) => {
+import {Pokedex} from '../components/types/types';
+import {Pokemon} from '../components/types/types'
+interface IProps {
+  data: Pokedex[],
+  pcData: (pokemonData: Pokemon) => void
+}
+const Catalog:React.FunctionComponent<IProps> = ({ data, pcData }) => {
+  console.log(data);
   return (
     <>
       {data?.map((pokemonData) => {
