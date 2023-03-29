@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { pokeType } from '../components/constants/constants'
+import { getClassFromPokeType } from '../components/utils/utils'
 const Catalog = ({ data, pcData }) => {
   return (
     <>
@@ -21,7 +21,7 @@ const Catalog = ({ data, pcData }) => {
                 "flex",
                 "flex-col",
                 "mx-auto",
-                pokeType(pokemonType[0])
+                getClassFromPokeType(pokemonType[0])
               )}
             >
               <div className="flex flex-col my-auto">
