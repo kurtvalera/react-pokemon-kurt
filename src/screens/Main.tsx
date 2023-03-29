@@ -2,15 +2,21 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
+import {Pokedex} from '../components/types/types';
+import {Pokemon} from '../components/types/types'
+
 import Catalog from "../components/Catalog";
 import PokeCard from "../components/PokeCard";
 
 const Main = () => {
-  const [pokedex, setPokedex] = useState([]);
+
+
+  const [pokedex, setPokedex] = useState<Pokedex[]>([]); 
+  
   const [url, setUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
   );
-  const [pokemon, showPokemon] = useState();
+  const [pokemon, showPokemon] = useState<Pokemon>();
 
   const getData = async () => {
     const response = await axios.get(url);
@@ -18,15 +24,16 @@ const Main = () => {
     setUrl(response.data.next);
   };
 
-  const getPokeData = async (response) => {
-    response.map(async (pokemon) => {
-      const res = await axios.get(pokemon.url);
-
-      setPokedex((pokedex) => {
-        pokedex = [...pokedex, res.data];
-        return pokedex;
-      });
-    });
+  const getPokeData = async (response?: []) => {
+    const x: Pokedex[] = response;
+    x.map(async (pokedex) => {
+      const res = await axios.get(pokedex.url);
+      setPokedex((pokemon)=> {
+        pokemon = [...pokemon, res.data];
+        return pokemon;
+      })
+      
+    })
   };
 
   const handleScroll = (e) => {
@@ -41,7 +48,7 @@ const Main = () => {
     getData();
   }, []);
   return (
-    <>
+   
       <div className="container flex flex-row w-full m-0 p-0">
         <div
           className="flex flex-row flex-wrap max-h-[100vh] max-w-[50vw] overflow-y-scroll"
@@ -53,7 +60,7 @@ const Main = () => {
           <PokeCard pokemon={pokemon} />
         </div>
       </div>
-    </>
+  
   );
 };
 
